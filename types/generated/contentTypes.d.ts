@@ -835,6 +835,11 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
       'oneToOne',
       'api::attribute.attribute'
     >;
+    icon: Attribute.Relation<
+      'api::attribute.attribute',
+      'oneToOne',
+      'api::icon.icon'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -858,16 +863,16 @@ export interface ApiIconIcon extends Schema.CollectionType {
     singularName: 'icon';
     pluralName: 'icons';
     displayName: 'Icon';
-    description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
     icon: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
