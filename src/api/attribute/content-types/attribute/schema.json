@@ -21,9 +21,10 @@
       "relation": "oneToOne",
       "target": "api::attribute.attribute"
     },
-    "iconName": {
-      "type": "string",
-      "required": false
+    "icon": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::icon.icon"
     }
   }
 }

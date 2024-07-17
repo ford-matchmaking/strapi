@@ -362,84 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAttributeAttribute extends Schema.CollectionType {
-  collectionName: 'attributes';
-  info: {
-    singularName: 'attribute';
-    pluralName: 'attributes';
-    displayName: 'Attribute';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    parent: Attribute.Relation<
-      'api::attribute.attribute',
-      'oneToOne',
-      'api::attribute.attribute'
-    >;
-    iconName: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::attribute.attribute',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::attribute.attribute',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiJobJob extends Schema.CollectionType {
-  collectionName: 'jobs';
-  info: {
-    singularName: 'job';
-    pluralName: 'jobs';
-    displayName: 'Job';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    attribute: Attribute.Component<'attribute.attribute', true> &
-      Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 3;
-      }>;
-    attributes: Attribute.Relation<
-      'api::job.job',
-      'oneToMany',
-      'api::attribute.attribute'
-    >;
-    title: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'api::job.job', 'title'> & Attribute.Required;
-    image: Attribute.Media & Attribute.Required;
-    lead: Attribute.String & Attribute.Required;
-    applyLink: Attribute.String & Attribute.Required;
-    location: Attribute.Component<'contect.location'> & Attribute.Required;
-    content: Attribute.DynamicZone<
-      ['contect.title-desc', 'contect.title-image', 'contect.title-video']
-    > &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -895,6 +817,111 @@ export interface PluginEmailDesignerEmailTemplate
   };
 }
 
+export interface ApiAttributeAttribute extends Schema.CollectionType {
+  collectionName: 'attributes';
+  info: {
+    singularName: 'attribute';
+    pluralName: 'attributes';
+    displayName: 'Attribute';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    parent: Attribute.Relation<
+      'api::attribute.attribute',
+      'oneToOne',
+      'api::attribute.attribute'
+    >;
+    icon: Attribute.Relation<
+      'api::attribute.attribute',
+      'oneToOne',
+      'api::icon.icon'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::attribute.attribute',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::attribute.attribute',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIconIcon extends Schema.CollectionType {
+  collectionName: 'icons';
+  info: {
+    singularName: 'icon';
+    pluralName: 'icons';
+    displayName: 'Icon';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    icon: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobJob extends Schema.CollectionType {
+  collectionName: 'jobs';
+  info: {
+    singularName: 'job';
+    pluralName: 'jobs';
+    displayName: 'Job';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attribute: Attribute.Component<'attribute.attribute', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 3;
+      }>;
+    attributes: Attribute.Relation<
+      'api::job.job',
+      'oneToMany',
+      'api::attribute.attribute'
+    >;
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::job.job', 'title'> & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    lead: Attribute.String & Attribute.Required;
+    applyLink: Attribute.String & Attribute.Required;
+    location: Attribute.Component<'contect.location'> & Attribute.Required;
+    content: Attribute.DynamicZone<
+      ['contect.title-desc', 'contect.title-image', 'contect.title-video']
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -905,8 +932,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::attribute.attribute': ApiAttributeAttribute;
-      'api::job.job': ApiJobJob;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -916,6 +941,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate;
+      'api::attribute.attribute': ApiAttributeAttribute;
+      'api::icon.icon': ApiIconIcon;
+      'api::job.job': ApiJobJob;
     }
   }
 }
