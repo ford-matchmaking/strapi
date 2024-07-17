@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_attribute_attributes",
+  "info": {
+    "displayName": "Attribute",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "categoriesCategorizer": {
+      "type": "customField",
+      "options": {
+        "target": "attributes",
+        "targetAttribute": "name",
+        "maxDepth": 2
+      },
+      "customField": "plugin::categorizer.categorizer"
+    }
+  }
+}

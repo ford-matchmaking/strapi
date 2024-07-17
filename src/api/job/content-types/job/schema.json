@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attribute": {
+      "type": "component",
+      "repeatable": true,
+      "component": "attribute.attribute"
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::attribute.attribute"
+    }
+  }
+}
