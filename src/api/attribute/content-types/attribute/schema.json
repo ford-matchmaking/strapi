@@ -20,11 +20,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::attribute.attribute"
-    },
-    "icon": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::icon.icon"
     }
   }
 }

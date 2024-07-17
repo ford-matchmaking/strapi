@@ -835,11 +835,6 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
       'oneToOne',
       'api::attribute.attribute'
     >;
-    icon: Attribute.Relation<
-      'api::attribute.attribute',
-      'oneToOne',
-      'api::icon.icon'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
