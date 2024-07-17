@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contect_title_images",
+  "info": {
+    "displayName": "Title+Image"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

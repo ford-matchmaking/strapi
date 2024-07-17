@@ -13,12 +13,17 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "parent": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::attribute.attribute"
+    },
+    "iconName": {
+      "type": "string",
+      "required": false
     }
   }
 }

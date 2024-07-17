@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contect_title_videos",
+  "info": {
+    "displayName": "Title+Video"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

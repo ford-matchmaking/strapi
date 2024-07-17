@@ -374,12 +374,13 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required;
     parent: Attribute.Relation<
       'api::attribute.attribute',
       'oneToOne',
       'api::attribute.attribute'
     >;
+    iconName: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -409,12 +410,26 @@ export interface ApiJobJob extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    attribute: Attribute.Component<'attribute.attribute', true>;
+    attribute: Attribute.Component<'attribute.attribute', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 3;
+      }>;
     attributes: Attribute.Relation<
       'api::job.job',
       'oneToMany',
       'api::attribute.attribute'
     >;
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::job.job', 'title'> & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    lead: Attribute.String & Attribute.Required;
+    applyLink: Attribute.String & Attribute.Required;
+    location: Attribute.Component<'contect.location'> & Attribute.Required;
+    content: Attribute.DynamicZone<
+      ['contect.title-desc', 'contect.title-image', 'contect.title-video']
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
