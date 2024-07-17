@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attribute_icons",
+  "info": {
+    "singularName": "attribute-icon",
+    "pluralName": "attribute-icons",
+    "displayName": "AttributeIcon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "iconClass": {
+      "type": "string"
+    }
+  }
+}

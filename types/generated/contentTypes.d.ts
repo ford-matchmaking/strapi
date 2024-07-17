@@ -835,10 +835,10 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
       'oneToOne',
       'api::attribute.attribute'
     >;
-    icon: Attribute.Relation<
+    attribute_icon: Attribute.Relation<
       'api::attribute.attribute',
       'oneToOne',
-      'api::icon.icon'
+      'api::attribute-icon.attribute-icon'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -857,25 +857,33 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
   };
 }
 
-export interface ApiIconIcon extends Schema.CollectionType {
-  collectionName: 'icons';
+export interface ApiAttributeIconAttributeIcon extends Schema.CollectionType {
+  collectionName: 'attribute_icons';
   info: {
-    singularName: 'icon';
-    pluralName: 'icons';
-    displayName: 'Icon';
+    singularName: 'attribute-icon';
+    pluralName: 'attribute-icons';
+    displayName: 'AttributeIcon';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String;
-    icon: Attribute.String;
+    iconClass: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::attribute-icon.attribute-icon',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::attribute-icon.attribute-icon',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -942,7 +950,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate;
       'api::attribute.attribute': ApiAttributeAttribute;
-      'api::icon.icon': ApiIconIcon;
+      'api::attribute-icon.attribute-icon': ApiAttributeIconAttributeIcon;
       'api::job.job': ApiJobJob;
     }
   }
