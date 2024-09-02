@@ -9244,10 +9244,10 @@ statuses@2.0.1, statuses@^2.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
-strapi-plugin-categorizer@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-categorizer/-/strapi-plugin-categorizer-2.0.9.tgz#199db5861caa4067e5825cd20700caf57b95f5c3"
-  integrity sha512-XybjeF9IpLC2p4fWuBAXbYAC8ok4aA4qOKxCFb53VdnQQVsl0JFmCnrXLfgxXz9Sq4apYDvGRQSia/HuSLl5kA==
+strapi-plugin-categorizer@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-categorizer/-/strapi-plugin-categorizer-2.0.10.tgz#d68d3664fd5877dece98935219743267bfabce9e"
+  integrity sha512-R0Ls0gdbS+Snr02S0N2NMd7lN/TyAnYSqlwKrM+9isczewZ8C56ZoRFH3toiGoHMeEATLNzt2w4sPBPnCBWMDQ==
   dependencies:
     "@strapi/design-system" "^1.6.3"
     "@strapi/helper-plugin" "^4.6.0"
